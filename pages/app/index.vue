@@ -1,5 +1,5 @@
 <script setup lang="ts">
-definePageMeta({ layout: 'dashboard' })
+definePageMeta({ layout: 'dashboard', middleware: 'auth' })
 
 const vehicles = [
     { id: 1 },
@@ -40,7 +40,7 @@ const emitToggleDeleteModal = (value: any) => {
         <main class="flex-1 overflow-y-auto">
             <div class="px-4 pt-8 sm:px-6 lg:px-8">
                 <div class="flex border-b border-gray-200 pb-2">
-                    <AppAtomicTypoH1 :text="'App'" />
+                    <AtomicTypoH1 :text="'App'" />
 
                     <AppDisplayMode />
                 </div>

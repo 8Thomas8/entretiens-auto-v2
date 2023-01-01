@@ -48,8 +48,8 @@ const emitCloseAddVehicle = () => {
                                     </div>
                                 </div>
                                 <div class="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
-                                    <AppAtomicBtnPrimary content="Créer" />
-                                    <AppAtomicBtnSecondary
+                                    <AtomicBtnPrimary content="Créer" />
+                                    <AtomicBtnSecondary
                                         @click="emitCloseAddVehicle()"
                                         content="Annuler" />
                                 </div>

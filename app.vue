@@ -6,7 +6,7 @@ const metaDescription = 'Meta description à rédiger'
 <template>
   <div>
     <Head>
-      <Title :content="title" />
+      <Title :content="title"/>
       <Meta name="description" :content="metaDescription"/>
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,8 +15,10 @@ const metaDescription = 'Meta description à rédiger'
           rel="stylesheet">
     </Head>
 
+    <Html class="bg-gray-50">
     <NuxtLayout>
       <NuxtPage/>
     </NuxtLayout>
+    </Html>
   </div>
 </template>

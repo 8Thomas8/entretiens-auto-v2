@@ -56,7 +56,7 @@ const emitToggleDeleteModal = () => {
                     <p class="text-sm font-medium text-gray-500">Nissan</p>
                 </div>
                 <div class="mt-4">
-                    <AppAtomicBtnPrimary
+                    <AtomicBtnPrimary
                         :iconSvg="iconBtn"
                         content="Gestion des entretiens" />
                 </div>
@@ -88,8 +88,8 @@ const emitToggleDeleteModal = () => {
             </div>
 
             <div class="flex space-x-2">
-                <AppAtomicBtnPrimary content="Modifier" />
-                <AppAtomicBtnSecondary
+                <AtomicBtnPrimary content="Modifier" />
+                <AtomicBtnSecondary
                     @click="emitToggleDeleteModal()"
                     content="Supprimer" />
             </div>

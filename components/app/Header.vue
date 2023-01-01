@@ -42,7 +42,7 @@ const emitToggleAddVehicle = (value: Boolean) => {
           </div>
 
           <div class="relative flex-shrink-0">
-            <AppHeaderProfileBtn @click="toggleStatusProfilDropdown()"/>
+            <AtomicBtnProfileBtn @click="toggleStatusProfilDropdown()"/>
 
             <Transition class="transition" enter-to-class="transform ease-out duration-100 opacity-100 scale-100"
                         enter-from-class="transform ease-in duration-75 opacity-0 scale-95"

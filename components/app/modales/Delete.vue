@@ -51,10 +51,10 @@ const emitCloseDeleteModal = () => {
                                     </div>
                                 </div>
                                 <div class="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
-                                    <AppAtomicBtnPrimary
+                                    <AtomicBtnPrimary
                                         type="red"
                                         content="Supprimer" />
-                                    <AppAtomicBtnSecondary
+                                    <AtomicBtnSecondary
                                         content="Annuler"
                                         @click="emitCloseDeleteModal()" />
                                 </div>

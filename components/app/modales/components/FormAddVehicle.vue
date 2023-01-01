@@ -16,20 +16,20 @@ watch(km, value => {
             <div class="bg-white py-5 sm:py-6">
                 <div class="grid grid-cols-6 gap-6">
                     <div class="col-span-6 sm:col-span-3">
-                        <AppAtomicFieldLabel
+                        <AtomicFieldLabel
                             forId="builder"
                             label="Constructeur" />
-                        <AppAtomicFieldSelect
+                        <AtomicFieldSelect
                             id="builder"
                             name="builder"
                             :options="builders" />
                     </div>
 
                     <div class="col-span-6 sm:col-span-3">
-                        <AppAtomicFieldLabel
+                        <AtomicFieldLabel
                             forId="name-model"
                             label="Nom" />
-                        <AppAtomicFieldInput
+                        <AtomicFieldInput
                             type="text"
                             name="name-model"
                             id="name-model"
@@ -37,20 +37,20 @@ watch(km, value => {
                     </div>
 
                     <div class="col-span-6 sm:col-span-3">
-                        <AppAtomicFieldLabel
+                        <AtomicFieldLabel
                             forId="energy"
                             label="Energie" />
-                        <AppAtomicFieldSelect
+                        <AtomicFieldSelect
                             id="energy"
                             name="energy"
                             :options="energies" />
                     </div>
 
                     <div class="col-span-6 sm:col-span-3">
-                        <AppAtomicFieldLabel
+                        <AtomicFieldLabel
                             forId="km-number"
                             label="Kilométrage" />
-                        <AppAtomicFieldInput
+                        <AtomicFieldInput
                             v-model="km"
                             type="text"
                             name="km-number"
