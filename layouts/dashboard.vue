@@ -9,7 +9,7 @@ useHead({
 
 const menuStatus: Ref<boolean> = ref(false)
 const showAddVehicle: Ref<boolean> = ref(false)
-const showDeleteModal: Ref<boolean> = ref(true)
+const showDeleteModal: Ref<boolean> = ref(false)
 
 const toggleMenu = () => {
     menuStatus.value = !menuStatus.value
