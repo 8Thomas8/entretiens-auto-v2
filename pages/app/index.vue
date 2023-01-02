@@ -1,5 +1,14 @@
 <script setup lang="ts">
+import { useVehiclesStore } from '~/store/vehicles'
+
 definePageMeta({ layout: 'dashboard', middleware: 'auth' })
+
+const vehiclesStore = useVehiclesStore()
+const vehiclesList = vehiclesStore.vehiclesList
+
+vehiclesStore.getAll()
+
+console.log(vehiclesList)
 
 const vehicles = [
     { id: 1 },
