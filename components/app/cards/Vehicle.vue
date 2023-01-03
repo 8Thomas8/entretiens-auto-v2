@@ -2,15 +2,17 @@
 const props = defineProps({
   selectedVehicle: {
     type: Object,
-    default: {},
+    default: null,
     required: true
   },
   vehicle: {
     type: Object,
-    default: {},
+    default: null,
     required: true
   }
 })
+
+const vehicleKmFormatted = computed(() => props.vehicle.km.toLocaleString('fr-FR'))
 </script>
 
 <template>
@@ -27,7 +29,7 @@ const props = defineProps({
       </button>
     </div>
     <p class="pointer-events-none mt-2 block truncate text-sm font-medium text-gray-900">
-      Nissan Leaf</p>
-    <p class="pointer-events-none block text-sm font-medium text-gray-500">27000 km</p>
+      {{ vehicle.name }}</p>
+    <p class="pointer-events-none block text-sm font-medium text-gray-500">{{ vehicleKmFormatted }} km</p>
   </div>
 </template>
