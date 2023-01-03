@@ -6,7 +6,7 @@ export const useVehiclesStore = defineStore({
     id: 'vehicles-store',
     state: () => {
         return {
-            vehiclesList: [],
+            vehiclesList: [] as IVehicle[],
         }
     },
     actions: {
@@ -14,7 +14,7 @@ export const useVehiclesStore = defineStore({
             try {
                 const {data, error} = await useSupabaseClient().from('vehicles').select()
                 if (error) throw error
-                console.log(data)
+                this.vehiclesList = data
             } catch (error: any) {
                 console.error('Impossible de récupérer la liste de véhicules: ', error.message)
             }
