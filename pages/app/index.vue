@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import {useVehiclesStore} from '~/store/vehicles'
 import {storeToRefs} from "pinia";
+import {Ref} from "@vue/reactivity";
 
 definePageMeta({layout: 'dashboard', middleware: 'auth'})
 
 const vehiclesStore = useVehiclesStore()
 const {vehiclesList} = storeToRefs(vehiclesStore)
-const selectedVehicle = ref(null)
-const emit = defineEmits(['toggleDeleteModal'])
+let selectedVehicle = ref(null)
+const deleteModalIsActive: Ref<boolean> = ref(false)
 
 const setSelectedVehicle = (item: any) => {
   if (item) {
@@ -23,8 +24,9 @@ const setSelectedVehicle = (item: any) => {
   }
 }
 
-const emitToggleDeleteModal = (value: any) => {
-  emit('toggleDeleteModal', value)
+const showDeleteModal = (value = true) => {
+  deleteModalIsActive.value = value
+  if(!deleteModalIsActive.value) selectedVehicle.value = null
 }
 
 vehiclesStore.getAll()
@@ -72,8 +74,15 @@ vehiclesStore.getAll()
         <AppSidebarDetailsSidebar
             :selected-vehicle="selectedVehicle"
             @close-sidebar="setSelectedVehicle(null)"
-            @toggle-delete-modal="emitToggleDeleteModal($event)"/>
+            @toggle-delete-modal="showDeleteModal($event)"/>
       </div>
     </Transition>
+
+    <!-- Delete modale -->
+    <AppModalesDelete
+        @toggle-delete-modal="showDeleteModal($event)"
+        @result-delete="showDeleteModal($event)"
+        :show-delete-modal="deleteModalIsActive"
+        :element="selectedVehicle"/>
   </div>
 </template>

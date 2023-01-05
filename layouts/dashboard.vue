@@ -9,7 +9,6 @@ useHead({
 
 const menuStatus: Ref<boolean> = ref(false)
 const showAddVehicle: Ref<boolean> = ref(false)
-const showDeleteModal: Ref<boolean> = ref(false)
 
 const toggleMenu = () => {
     menuStatus.value = !menuStatus.value
@@ -17,12 +16,6 @@ const toggleMenu = () => {
 
 const toggleAddVehicle = (value: null) => {
     showAddVehicle.value = value || !showAddVehicle.value
-}
-
-const toggleDeleteModal = (value: null) => {
-    console.log('Layout')
-    // TODO Récupérer l'event depuis la page
-    showDeleteModal.value = value || !showDeleteModal.value
 }
 </script>
 
@@ -38,9 +31,7 @@ const toggleDeleteModal = (value: null) => {
                     <AppHeader
                         @toggle-add-vehicle="toggleAddVehicle($event)"
                         @toggle-menu="toggleMenu()" />
-                    <slot
-                        @toggle-delete-modal="toggleDeleteModal($event)"
-                        :show-delete-modal="showDeleteModal" />
+                    <slot />
                 </div>
             </div>
         </section>
@@ -49,8 +40,5 @@ const toggleDeleteModal = (value: null) => {
         <AppModalesAddVehicle
             @toggle-add-vehicle="toggleAddVehicle($event)"
             :show-add-vehicle="showAddVehicle" />
-        <AppModalesDelete
-            @toggle-delete-modal="toggleDeleteModal($event)"
-            :show-delete-modal.sync="showDeleteModal" />
     </div>
 </template>
