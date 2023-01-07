@@ -9,8 +9,7 @@ const emits = defineEmits(['showNotification'])
 const handleLogin = async () => {
   try {
     loading.value = true
-    const {error} = await supabase.auth.signInWithOtp({email: email.value})
-    if (error) throw error
+    await supabase.auth.signInWithOtp({email: email.value})
     emits('showNotification', {type: NotificationType.success, message: 'Consultez vos emails et cliquez sur le lien pour vous connecter. Pensez à vérifier vos spam.'})
   } catch (error: any) {
     emits('showNotification', {type: NotificationType.error, message: error.error_description || error.message})

@@ -22,7 +22,7 @@ const openDeleteModal = () => {
   emit('toggleDeleteModal', props.selectedVehicle)
 }
 
-const selectedVehicleKmFormatted = computed(() => props.selectedVehicle.km.toLocaleString('fr-FR'))
+const selectedVehicleKmFormatted = computed(() => props.selectedVehicle.km.toLocaleString())
 const selectedVehicleCreatedDateFormatted = computed(() => new Date(props.selectedVehicle.created_at).toLocaleDateString('fr-FR'))
 const selectedVehicleUpdatedDateFormatted = computed(() => new Date(props.selectedVehicle.updated_at).toLocaleDateString('fr-FR'))
 

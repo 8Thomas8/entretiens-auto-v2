@@ -12,7 +12,7 @@ const props = defineProps({
   }
 })
 
-const vehicleKmFormatted = computed(() => props.vehicle.km.toLocaleString('fr-FR'))
+const vehicleKmFormatted = computed(() => props.vehicle.km.toLocaleString())
 </script>
 
 <template>

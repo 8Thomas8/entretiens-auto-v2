@@ -7,7 +7,7 @@ definePageMeta({layout: 'dashboard', middleware: 'auth'})
 
 const vehiclesStore = useVehiclesStore()
 const {vehiclesList} = storeToRefs(vehiclesStore)
-let selectedVehicle = ref(null)
+let selectedVehicle: Ref<IVehicle | null> = ref(null)
 const deleteModalIsActive: Ref<boolean> = ref(false)
 
 const setSelectedVehicle = (item: any) => {
