@@ -21,7 +21,8 @@ export default defineNuxtConfig({
                 },
             },
             plugins: [
-                require('@tailwindcss/forms')
+                require('@tailwindcss/forms'),
+                require('@tailwindcss/line-clamp')
             ]
         },
         injectPosition: 0,
