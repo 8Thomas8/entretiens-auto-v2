@@ -9,13 +9,19 @@ const props = defineProps({
     type: Array,
     required: true,
     default: () => [] as IBuilder[]
+  },
+  form: {
+    type: Object,
+    required: true,
+    default: () => {
+    }
   }
 })
 
 // Replace all non numerics characters from the km value
 watch(km, value => {
-  const nbRegex = /[^0-9]+/g
-  km.value = value.replace(nbRegex, '')
+  const nbRegex = /\D/g
+  props.form.km = value.replace(nbRegex, '')
 })
 </script>
 
@@ -30,6 +36,9 @@ watch(km, value => {
           <AtomicFormSelect
               id="builder"
               name="builder"
+              mode="name"
+              v-model="props.form.builder"
+              :value="props.form.builder"
               :options="buildersList"/>
           <AtomicFormError :content='""'/>
         </div>
@@ -42,6 +51,9 @@ watch(km, value => {
               type="text"
               name="name-model"
               id="name-model"
+              placeholder="Entrez le nom du véhicule"
+              v-model="props.form.name"
+              :value="props.form.name"
               autocomplete="name-model"
               required/>
         </div>
@@ -53,7 +65,11 @@ watch(km, value => {
           <AtomicFormSelect
               id="energy"
               name="energy"
-              :options="energies"/>
+              :options="energies"
+              :value="props.form.energy"
+              mode="id"
+              v-model="props.form.energy"
+          />
         </div>
 
         <div class="col-span-6 sm:col-span-3">
@@ -64,7 +80,9 @@ watch(km, value => {
               v-model="km"
               type="text"
               name="km-number"
+              placeholder="Entrez le kilométrage"
               id="km-number"
+              :value="props.form.km"
               autocomplete="km-number"/>
         </div>
       </div>
