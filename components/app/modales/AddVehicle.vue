@@ -1,6 +1,11 @@
 <script setup>
-import {storeToRefs} from "pinia";
 import {useBuildersStore} from "~/store/builders";
+import {useVehiclesStore} from "~/store/vehicles";
+
+const addLoading = ref(false)
+
+const user = useSupabaseUser()
+
 
 const props = defineProps({
   showAddVehicle: {
@@ -11,20 +16,28 @@ const props = defineProps({
 })
 
 const form = ref({
+  created_by: user.value.id,
+  updated_by: user.value.id,
   builder: '-1',
   name: '',
   energy: '-1',
   km: ''
 })
 
+const vehiclesStore = useVehiclesStore()
+
 const buildersStore = useBuildersStore()
-const {buildersList} = storeToRefs(buildersStore)
+buildersStore.getAll()
+
+const buildersList = computed(() =>buildersStore.buildersList)
 
 const emit = defineEmits(['toggleAddVehicle'])
 
 const onClose = () => {
   emit('toggleAddVehicle', false)
   form.value = {
+    created_by: user.value.id,
+    updated_by: user.value.id,
     builder: '-1',
     name: '',
     energy: '-1',
@@ -33,10 +46,13 @@ const onClose = () => {
 }
 
 const onSubmit = () => {
-  console.log()
+  addLoading.value = true
+  vehiclesStore.createOne(form.value).finally(() => {
+    addLoading.value = false
+    onClose()
+  })
 }
 
-buildersStore.getAll()
 </script>
 
 <template>
@@ -57,7 +73,7 @@ buildersStore.getAll()
           <div class="fixed inset-0 bg-gray-900 bg-opacity-75"></div>
           <div class="fixed inset-0 z-10 overflow-y-auto">
             <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-              <form @submit.prevent="onSubmit"
+              <form @submit.prevent="onSubmit()"
                     class="relative overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
                 <div>
                   <div>

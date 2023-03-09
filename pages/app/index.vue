@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import {useVehiclesStore} from '~/store/vehicles'
-import {storeToRefs} from "pinia";
 import {Ref} from "@vue/reactivity";
 
 definePageMeta({layout: 'dashboard', middleware: 'auth'})
 
 const vehiclesStore = useVehiclesStore()
-const {vehiclesList} = storeToRefs(vehiclesStore)
+vehiclesStore.getAll()
+
+const vehiclesList = computed(() => vehiclesStore.vehiclesList)
+
 let selectedVehicle: Ref<IVehicle | null> = ref(null)
 const deleteModalIsActive: Ref<boolean> = ref(false)
 
@@ -29,7 +31,6 @@ const showDeleteModal = (value = true) => {
   if(!deleteModalIsActive.value) selectedVehicle.value = null
 }
 
-vehiclesStore.getAll()
 </script>
 
 <template>

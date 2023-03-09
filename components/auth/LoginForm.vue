@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import {NotificationType} from "~/enum/NotificationType";
+import {Ref} from "vue";
 
 const supabase = useSupabaseClient()
 
-const loading = ref(false)
+const loading: Ref<boolean> = ref(false)
 const email = ref('')
 const emits = defineEmits(['showNotification'])
 const handleLogin = async () => {
